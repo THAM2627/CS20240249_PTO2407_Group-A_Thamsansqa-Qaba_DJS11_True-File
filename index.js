@@ -23,12 +23,12 @@ const time_hour = time / 3600; // converts seconds to hours
 
 const d2 = (vel / time_hour) //calcultes new distance
 const rf = fuel - fbr * time //calculates remaining fuel
-const vel2 = calcNewVel(acc, vel_milesps, time) //calculates new velocity based on acceleration
+const vel2 = calcNewVel(acc, newVel_kmh, time) //calculates new velocity based on acceleration
 
 // Pick up an error with how the function below is called and make it robust to such errors
 function calcNewVel(vel, acc, time) {
   const newVel = vel + (acc * time);
-  const newVel_kmh = newVel / 0.277778;
+  const newVel_kmh = newVel;
   return newVel_kmh
 }
 
