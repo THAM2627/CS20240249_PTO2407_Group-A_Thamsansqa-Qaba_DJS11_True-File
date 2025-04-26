@@ -6,6 +6,7 @@
  */
 
 // Given Parameters
+
 const vel = 10000; // velocity (km/h)
 const acc = 3; // acceleration (m/s^2)
 const time = 3600; // seconds (1 hour)
@@ -14,15 +15,15 @@ const fuel = 5000; // remaining fuel (kg)
 const fbr = 0.5; // fuel burn rate (kg/s)
 
 // Parameters converted
-const vel_mps = vel * 0.277778; // converts km/h to m/s
+
+const vel_milesps = vel * 0.277778; // converts km/h to m/s
 const time_hour = time / 3600; // converts seconds to hours
 
+// Calculations for velocity, distance, and remaining fuel
 
-
-
-const d2 = d + (vel * time) //calcultes new distance
+const d2 = d + (vel_milesps * time) //calcultes new distance
 const rf = fbr * time //calculates remaining fuel
-const vel2 = calcNewVel(acc, vel_mps, time) //calculates new velocity based on acceleration
+const vel2 = calcNewVel(acc, vel_milesps, time) //calculates new velocity based on acceleration
 
 // Pick up an error with how the function below is called and make it robust to such errors
 calcNewVel = (vel, acc, time) => {
