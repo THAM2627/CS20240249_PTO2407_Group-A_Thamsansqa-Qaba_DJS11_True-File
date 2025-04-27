@@ -19,19 +19,25 @@ const fbr = 0.5; // fuel burn rate (kg/s)
 const vel_milesps = vel * 0.277778; // converts km/h to m/s
 const time_hour = time / 3600; // converts seconds to hours
 
-// Calculations for velocity, distance, and remaining fuel
 
+// Calculations for velocity, distance, and remaining fuel
 const d2 = (vel / time_hour) //calcultes new distance
 const rf = fuel - fbr * time //calculates remaining fuel
-const vel2 = calcNewVel(acc, newVel_kmh, time) //calculates new velocity based on acceleration
+const vel2 = calcNewVel(acc, vel, time) //calculates new velocity based on acceleration
 
 // Pick up an error with how the function below is called and make it robust to such errors
 function calcNewVel(vel, acc, time) {
-  const newVel = vel + (acc * time);
-  const newVel_kmh = newVel;
-  return newVel_kmh
+  if (vel === undefined || acc === undefined || time === undefined) {
+    throw new Error('Missing required parameters');
+  }
+  if (acc < 0 || vel < 0 || time < 0) {
+    throw new Error('Parameters cannot be negative'); x
+  } else {
+    const newVel2 = vel + (acc * time);
+    const newVel_kmh = newVel2 / 0.277778;
+    return newVel_kmh
+  }
 }
-
 console.log(`Corrected New Velocity: ${vel2} km/h`);
 console.log(`Corrected New Distance: ${d2} km`);
 console.log(`Corrected Remaining Fuel: ${rf} kg`);
